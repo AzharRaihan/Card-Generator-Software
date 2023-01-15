@@ -1,0 +1,9 @@
+.wrapper .main-content-wrapper {
+    padding: 15px 15px 15px 15px;
+}
+.sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .right-side, .sidebar-mini.sidebar-collapse .main-footer {
+    margin-left: 0px;
+}
+.sidebar-mini.sidebar-collapse .main-header {
+    padding-left: 15px;
+}

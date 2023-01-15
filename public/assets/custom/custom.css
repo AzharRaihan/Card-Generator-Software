@@ -1,0 +1,243 @@
+.main-header .navbar .wrapper_up_wrapper .hh_wrapper .menu-list li:first-child {
+    width: 207px;
+    margin-right: 10px;
+}
+.main-header .navbar .navbar-custom-menu:last-child .user-profile {
+    display: flex;
+    float: right;
+}
+.actionDropDownBtn .dropdown-menu li a {
+    padding: 9px 11px;
+    display: block;
+    text-decoration: none;
+    font-size: 13px;
+    color: #6e6b7b;
+    transition: all 0.3s;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.wd-100{
+    width: 100px;
+}
+.h-40{
+    height: 40px;
+}
+
+.label-font{
+    font-size: 15px;
+}
+
+.ds_mt_34{
+   margin-top: 34px;
+}
+
+.ds_ml_10{
+    margin-left: 10px !important;
+}
+
+.ds_ml_12{
+    margin-left: 12px !important;
+}
+.min-height-150 {
+    min-height: 150px !important;
+}
+
+.alert-body, p {
+    margin: 0;
+}
+.alert-wrapper .alert .btn-close {
+    padding: 24px 15px !important;
+}
+
+
+.displayNone{
+	display: none;
+}
+
+.error{
+	border: 1px solid red !important;
+}
+
+.justify{
+	text-align: justify !important;
+}
+
+.align-right{
+	float: right !important;
+}
+
+btn-close {
+    margin-top: 10px;
+}
+.bg-white{
+    background-color: white;
+}
+.ml-10 {
+    margin-left: 10px;
+}
+.align-baseline{
+    vertical-align: baseline;
+}
+.mt-3 {
+    margin-top: 3px !important;
+}
+
+.align-left{
+	float: left !important;
+}
+
+.top{
+	margin-top: 32px;
+}
+
+.given{
+	background-color: rgb(0, 128, 128);
+	color: white;
+}
+.custom-label{
+    font-size: 11px;
+    color: black;
+    font-weight: 400;
+}
+
+.custom-btn{
+    background: #3a6a95;
+    color: white;
+    border-radius: 10px;
+    height: 23px;
+    font-size: 12px;
+    line-height: 8px;
+    padding: 8px;
+}
+
+.booked-btn{
+    background: #dd4b39;
+    color: white;
+    border-radius: 10px;
+    height: 23px;
+    font-size: 12px;
+    line-height: 8px;
+    padding: 8px;
+}
+
+.badge{
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.ds_table_image{
+    height: 50px;
+    width: 50px;
+    border-radius: 35px;
+}
+
+.ds_link{
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.badge-custom-one{
+    color: white;
+    background-color: #3a6a95;
+
+}
+
+.badge-success{
+    color: #fff;
+    background-color: #28a745;
+}
+.badge-info{
+    color: #fff;
+    background-color: #17a2b8;
+}
+.badge-secondary{
+    color: #fff;
+    background-color: #6c757d;
+}
+.badge-danger{
+    color: #fff;
+    background-color: #dc3545;
+}
+.badge-warning{
+    color: #fff;
+    background-color: #ffc107;
+}
+.badge-dark{
+    color: #fff;
+    background-color: #343a40;
+}
+
+.ds_payment_logo{
+    height: 50px;
+    height: 50px;
+}
+
+.custom-modal-header{
+    text-align: right;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.mr-5{
+    margin-right: 8px;
+}
+
+.pl-15 {
+    padding-left: 15px !important;
+}
+.rpl-15 {
+    padding: 15px 15px 15px 15px !important;
+}
+.main-sidebar .sidebar-menu li a, .main-sidebar2 .sidebar-menu li a {
+    white-space: normal !important;
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.erro_msg{
+    background-color: rgba(228, 12, 12, 0.726);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.main-sidebar .logo-wrapper .logo-lg img, .main-sidebar2 .logo-wrapper .logo-lg img {
+    width: 75% !important;
+    max-height: 50 !important;
+}
