@@ -8,7 +8,9 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
+.certificate-area span{
+    color: black;
+}
 .placeholder {
     padding: 0px;
     margin: 0px;
@@ -56,6 +58,9 @@
 .custom_ctrl{
     padding-left: 20px;
 }
+.position_relative{
+    position: relative !important;
+}
 
 .btn-check:active+.btn-danger:focus, .btn-check:checked+.btn-danger:focus, .btn-danger.active:focus, .btn-danger:active:focus, .show>.btn-danger.dropdown-toggle:focus {
     box-shadow: none !important;
@@ -73,4 +78,27 @@
 .p_lr_14{
     padding-left: 14px !important;
     padding-right: 14px !important;
+}
+
+
+.qr_code_range{
+    width: 70px;
+    height: 70px;
+}
+
+.resize img {
+    width: 100%;
+    height: 100%;
+}
+.ui-resizable-handle {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border: 1px solid #000;
+}
+.certificate-area .d_inline{
+    display: inline !important;
+}
+.c_pointer{
+    cursor: pointer;
 }

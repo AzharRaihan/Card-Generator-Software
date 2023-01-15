@@ -56,6 +56,7 @@ Route::group(['middleware' => ['XSS']], function () {
 
 
 
+
         // Admin Profile
         Route::get('change-password','ProfileController@changePasswordForm')
             ->name('change-password');
@@ -98,6 +99,11 @@ Route::group(['middleware' => ['XSS']], function () {
 
         
     });
+
+    Route::get('/qrcode', 'QrCodeController@index');
+
+
+
 
     Route::get('logout',function (){
         Auth::logout();

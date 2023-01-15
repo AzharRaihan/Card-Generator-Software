@@ -14,11 +14,13 @@
         <h3 class="top-left-header">Add Card Excel Upload</h3>
     </section>
 
+    {{-- {{ dd($background_id) }} --}}
+
     <div class="row">
         <div class="col-lg-12">
             <div class="box4column p-3">
                 @foreach ($actual_item as $item)
-                    <div class="certificate-area">
+                    <div class="certificate-area" style="background-image: url('{{ asset('uploads/card-background/'.$background_id) }}')">
                         <?php echo htmlspecialchars_decode($item) ?>
                     </div>
                 @endforeach

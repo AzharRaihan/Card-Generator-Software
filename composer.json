@@ -25,6 +25,7 @@
         "niklasravnsborg/laravel-pdf": "^4.1",
         "nwidart/laravel-modules": "^7.3",
         "phpoffice/phpspreadsheet": "^1.26",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/pdf-to-image": "^1.2",
         "srmklive/paypal": "~3.0",
         "stripe/stripe-php": "^7.114",

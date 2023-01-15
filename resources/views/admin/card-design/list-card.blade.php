@@ -99,10 +99,8 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Card Design</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
             </div>
-            <div class="modal-body m-auto">
-                <div class="text-center">
-                    <div id="show_design" class="certificate-area"></div>
-                </div>
+            <div class="modal-body">
+                <div id="show_design" class="certificate-area"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

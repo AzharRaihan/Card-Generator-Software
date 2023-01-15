@@ -216,14 +216,24 @@ class CardExcelUploadController extends Controller
     {
 
         $validated = $request->validate([
-            'design_id' => 'required',
             'item_id' => 'required',
+            'design_id' => 'required',
+            'background_id' => 'required',
         ]);
+
 
         if ($validated){
             $card_design_list = CardDesign::findOrFail($request->design_id);
+
             $extract_card_design = htmlspecialchars($card_design_list->card_design);
             $item_list = Card::findOrFail($request->item_id);
+
+            $background_id = $request->background_id;
+
+
+
+
+
             $card_item_list = $item_list->cardDetails;
             $actual_item = [];
             foreach ($card_item_list as $key=>$item){
@@ -236,8 +246,27 @@ class CardExcelUploadController extends Controller
                 $card_assign = str_replace(array("Other"), array($item->Other ?? ""), $card_assign);
                 array_push($actual_item, $card_assign);
             }
-            return view('admin.card-excel-upload.generate_list',compact('actual_item'));
+            // return response()->json([
+            //     'status' => 200,
+            //     'actual_item' => $actual_item,
+            //     'message' => 'Information has been saved successfully !',
+            // ]);
+            return view('admin.card-excel-upload.generate_list',compact('actual_item', 'background_id'));
         }
+
+
+
+
+        
+       
+
+
+
+
+
+
+
+
     }
 
 

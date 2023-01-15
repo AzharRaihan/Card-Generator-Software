@@ -34,11 +34,13 @@ final class Versions
      */
     const VERSIONS          = array (
   'asm89/stack-cors' => 'v2.1.1@73e5b88775c64ccc0b84fb60836b30dc9d92ac4a',
+  'bacon/bacon-qr-code' => '2.0.8@8674e51bb65af933a5ffaf1c308a660387c35c22',
   'brick/math' => '0.9.3@ca57d18f028f84f777b2168cd1911b0dee2343ae',
   'carlos-meneses/laravel-mpdf' => '2.1.11@cb52e5c17df9caa340eaed8566cfb1e3c7b37c33',
   'cohensive/embed' => 'v5.5.0@efbfbd529497f18471d4ac4c2aea7b6b8eb1a336',
   'composer/package-versions-deprecated' => '1.11.99.5@b4f54f74ef3453349c24a845d22392cd31e65f1d',
   'composer/semver' => '3.3.2@3953f23262f2bff1919fc82183ad9acb13ff62c9',
+  'dasprid/enum' => '1.0.3@5abf82f213618696dda8e3bf6f64dd042d8542b2',
   'doctrine/cache' => '2.2.0@1ca8f21980e770095a31456042471a57bc4c68fb',
   'doctrine/dbal' => '2.13.9@c480849ca3ad6706a39c970cdfe6888fa8a058b8',
   'doctrine/deprecations' => 'v1.0.0@0e2a4f1f8cdfc7a92ec3b01c9334898c806b30de',
@@ -96,6 +98,7 @@ final class Versions
   'ramsey/uuid' => '4.2.3@fc9bb7fb5388691fd7373cd44dcb4d63bbcf24df',
   'setasign/fpdf' => '1.8.5@f4104a04c9a3f95c4c26a0a0531abebcc980987a',
   'setasign/fpdi' => 'v2.3.6@6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
+  'simplesoftwareio/simple-qrcode' => '4.2.0@916db7948ca6772d54bb617259c768c9cdc8d537',
   'spatie/pdf-to-image' => '1.2.2@9a5cb264a99e87e010c65d4ece03b51f821d55bd',
   'srmklive/paypal' => '3.0.16@7138c3b6665d270c40e0df603b8f0c07fc583ca3',
   'stripe/stripe-php' => 'v7.128.0@c704949c49b72985c76cc61063aa26fefbd2724e',
@@ -167,7 +170,7 @@ final class Versions
   'sebastian/type' => '3.2.0@fb3fe09c5f0bae6bc27ef3ce933a1e0ed9464b6e',
   'sebastian/version' => '3.0.2@c6c1022351a901512170118436c764e473f6de8c',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'laravel/laravel' => '1.0.0+no-version-set@',
+  'laravel/laravel' => 'dev-main@c699721c051a4c1c96895f20be57f4dac1ef8c03',
 );
 
     private function __construct()

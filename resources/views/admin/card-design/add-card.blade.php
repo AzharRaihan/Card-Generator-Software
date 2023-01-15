@@ -24,30 +24,26 @@
                     </div>
                 </div>
                 <div class="d-flex mt-4">
-                    <ul class="placeholder">
-                        <li class="location btn df-bg-btn">
-                            <span>Location</span>
-                        </li>
-                        <li class="model btn df-bg-btn">
-                            <span>Model</span>
-                        </li>
-                        <li class="price btn df-bg-btn">
-                            <span>Price</span>
-                        </li>
-                        <li class="date_range btn df-bg-btn">
-                            <span>Date Range</span>
-                        </li>
-                        <li class="qr_code btn df-bg-btn">
-                            <span>QR-Code</span>
-                        </li>
-                        <li class="other btn df-bg-btn">
-                            <span>Other</span>
-                        </li>
-                    </ul>
                     <div class="certificate-wrap">
                         <div class="certificate-area">
-                        </div>
-                        <div class="certificate_erro_msg_count">
+                            <span class="drag c_pointer">
+                                <span class="trigger_to_select_location">Location</span>
+                            </span>
+                            <span class="drag c_pointer">
+                                <span class="trigger_to_select_model">Model</span>
+                            </span>
+                            <span class="drag c_pointer">
+                                <span class="trigger_to_select_price">Price</span>
+                            </span>
+                            <span class="drag c_pointer">
+                                <span class="trigger_to_select_date">Date Range</span>
+                            </span>
+                            <span class="drag c_pointer">
+                                <span class="trigger_to_select_other">Other</span>
+                            </span>
+                            <div class="drag resize edit-image ui-widget-content qr_code_range position_relative">
+                                <img src="{{ asset('frequent_changing/upload-demo/qrcode.png') }}" width="50" height="50">
+                            </div>
                         </div>
                         <button type="submit" class="mt-4 btn bg-blue-btn card_design_submit">Submit</button>
                     </div>
@@ -71,7 +67,7 @@
                                 <option value="900">Bold</option>
                             </select>
                         </div>
-                        <button type="button" class="w-100 btn bg-blue-btn reset-trigger mt-4">Reset</button>
+                        <button class="btn btn-danger del_item w-100 mt-4"><i class="fa fa-trash"></i> Del Item</button>
                     </div>
                 </div>
             </div>

@@ -190,7 +190,8 @@
         <span class="logo-mini">CG</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-            <img src="{{ asset(isset($site) && $site->logo ? $site->logo : 'assets/images/logo.png') }}" alt="" height="40" width="188">
+            {{-- <img src="{{ asset(isset($site) && $site->logo ? $site->logo : 'assets/images/logo.png') }}" alt="" height="40" width="188"> --}}
+            Card Generator
         </span>
         </a>
 
