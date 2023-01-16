@@ -106,6 +106,7 @@ class CardExcelUploadController extends Controller
                             $startcount++;
                         }
                         DB::table('card_details')->insert($data);
+                        activityLog('Created', Auth::user()->id, Auth::user()->name . 'has been create a excel file');
                     }
                 }else{
                     return redirect()->route('admin.card-excel-upload.create')->with(dangerMessage("Max row limit 12 and Max colum F"));
@@ -143,7 +144,8 @@ class CardExcelUploadController extends Controller
     {
         $id = encryptDecrypt($id, 'decrypt');
         $card_id = Card::findOrFail($id);
-        $card_item = CardDetails::where(['card_id'=>$card_id->id, 'del_status'=>'Live'])->get();       
+        $card_item = CardDetails::where(['card_id'=>$card_id->id, 'del_status'=>'Live'])->get();   
+        activityLog('Edit', Auth::user()->id, Auth::user()->name . 'has been edit the excel file date');    
         return view('admin.card-excel-upload.edit-card-excel-upload', compact('card_item', 'card_id'));
     }
 
@@ -171,6 +173,7 @@ class CardExcelUploadController extends Controller
                 'other' => $request->other[$i],
             ]);
         }
+        activityLog('Update', Auth::user()->id, Auth::user()->name . 'has been update excel file date');
         return redirect()->route('admin.card-excel-upload.index')->with(updateMessage("Information has been updated successfully !"));
     }
 
@@ -190,6 +193,7 @@ class CardExcelUploadController extends Controller
         CardDetails::whereIn('card_id', array($card->id))->update([
             'del_status' => 'Delete',
         ]);
+        activityLog('Delete', Auth::user()->id, Auth::user()->name . 'has been delete excel file date');
         return redirect()->back()->with(deleteMessage("Information has been delete successfully !"));
     }
 
@@ -243,14 +247,16 @@ class CardExcelUploadController extends Controller
                 $card_assign = str_replace(array("Date-Range"), array($item->date_range ?? ""), $card_assign);
                 $card_assign = str_replace(array("qrcode-position"), array(QrCode::size(100)->generate($item->qr_code) ?? ""), $card_assign);
                 $card_assign = str_replace(array("Other"), array($item->Other ?? ""), $card_assign);
-                array_push($actual_item, $card_assign);
+                array_push($actual_item, htmlspecialchars_decode($card_assign));
             }
-            // return response()->json([
-            //     'status' => 200,
-            //     'actual_item' => $actual_item,
-            //     'message' => 'Information has been saved successfully !',
-            // ]);
-            return view('admin.card-excel-upload.generate_list',compact('actual_item', 'background_id'));
+            activityLog('Created', Auth::user()->id, Auth::user()->name . 'has been generate a excel card data');
+            return response()->json([
+                'status' => 200,
+                'actual_item' => $actual_item,
+                'background_id' => $background_id,
+                'message' => 'Information has been saved successfully !',
+            ]);
+            //return view('admin.card-excel-upload.generate_list',compact('actual_item', 'background_id'));
         }
     }
 
@@ -265,5 +271,53 @@ class CardExcelUploadController extends Controller
         $card = Card::findOrFail($id);
         $generate_pdf = PDF::loadView('admin.card-excel-upload.card-generate-pdf', compact('card'));
         return $generate_pdf->download($card->id . '.pdf');
+    }
+
+    /**
+     * Card Generate PDF
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cardGeneratePDF2(Request $request)
+    {
+        $validated = $request->validate([
+            'item_id_for_gen_pdf' => 'required',
+            'design_id_for_gen_pdf' => 'required',
+            'background_id_for_gen_pdf' => 'required',
+        ]);
+        if ($validated){
+            $card_design_list = CardDesign::findOrFail($request->design_id_for_gen_pdf);
+            $extract_card_design = htmlspecialchars($card_design_list->card_design);
+            $item_list = Card::findOrFail($request->item_id_for_gen_pdf);
+            $background_id = $request->background_id_for_gen_pdf;
+            $card_item_list = $item_list->cardDetails;
+            $actual_item = [];
+            foreach ($card_item_list as $key=>$item){
+                $card_assign = $extract_card_design;
+                $card_assign = str_replace(array("Location"), array($item->location ?? ""), $card_assign);
+                $card_assign = str_replace(array("Model"), array($item->model ?? ""), $card_assign);
+                $card_assign = str_replace(array("Price"), array($item->price ?? ""), $card_assign);
+                $card_assign = str_replace(array("Date-Range"), array($item->date_range ?? ""), $card_assign);
+                $card_assign = str_replace(array("qrcode-position"), array(QrCode::format('png')->size(100)->generate($item->qr_code) ?? ""), $card_assign);
+                $card_assign = str_replace(array("Other"), array($item->Other ?? ""), $card_assign);
+                array_push($actual_item, htmlspecialchars_decode($card_assign));
+            }
+
+
+            // return pre($actual_item);
+
+
+            // return view('admin.card-excel-upload.card-generate-pdf',compact('actual_item', 'background_id'));
+
+
+            $generate_pdf = PDF::loadView('admin.card-excel-upload.card-generate-pdf', compact('actual_item'));
+            return $generate_pdf->download('TEST' . '.pdf');
+
+            // return view('admin.card-excel-upload.generate_list',compact('actual_item', 'background_id'));
+        }
+        // $id = encryptDecrypt($id, 'decrypt');
+        // $card = Card::findOrFail($id);
+        // $generate_pdf = PDF::loadView('admin.card-excel-upload.card-generate-pdf', compact('card'));
+        // return $generate_pdf->download($card->id . '.pdf');
     }
 }

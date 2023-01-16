@@ -502,6 +502,25 @@ if(! function_exists('number_to_words')) {
            return array('width' => $width,'height' => $height);
        }
    }
+
+
+
+
+    if (! function_exists('activityLog')) {
+        function activityLog($ticket_id, $activity_type, $text)
+        {
+            $activity_info = new ActivityLog();
+            $activity_info->type = $activity_type;
+            $activity_info->user_id = Auth::id();
+            $activity_info->ticket_id = $ticket_id;
+            $activity_info->activity = $text;
+            $activity_info->save();
+            return 0;
+        }
+    }
+
+
+
 }
 
 }

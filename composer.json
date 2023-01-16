@@ -21,6 +21,7 @@
         "laravel/ui": "^2.5",
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1",
+        "mpdf/mpdf": "^8.1",
         "nexmo/client": "^2.4",
         "niklasravnsborg/laravel-pdf": "^4.1",
         "nwidart/laravel-modules": "^7.3",

@@ -25,7 +25,7 @@
                             <tr>
                                 <th>SN</th>
                                 <th>Title</th>
-                                <th>Uploaded By</th>
+                                <th>Created By</th>
                                 <th>Creation Time</th>
                                 <th>Action</th>
                             </tr>
@@ -37,7 +37,7 @@
                                 <td>{{ $count -- }}</td>
                                 <td>{{ $card->generate_for }}</td>
                                 <td>{{ $card->added_by === 'admin' ? 'Admin' : 'User' }}</td>
-                                <td>{{ $card->created_at }}</td>
+                                <td>{{ $card->created_at->diffForHumans() }}</td>
                                 <td class="op_center">
                                     <div class="btn-group actionDropDownBtn">
                                         <button type="button" class="btn bg-blue-color dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

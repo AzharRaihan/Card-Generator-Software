@@ -1,5 +1,30 @@
 @extends('admin.layouts.app')
 @push('css')
+<style>
+    .certificate-area{
+        /* width: 336px;
+        height: 192px; */
+        /* border: 1px solid rgb(221, 221, 221); */
+        /* padding: 10px;
+        border-radius: 2px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center; */
+    }
+    .certificate-area{
+        /* width: 336px;
+        height: 192px; */
+        padding: 10px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-right: 20px
+    }
+    #preview{
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -12,10 +37,10 @@
         <h3 class="top-left-header">Generate Card</h3>
     </section>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="box4column p-3">
-                <form action="{{ route('admin.card-generate-view') }}" method="POST">
+    <div class="box-wrapper">
+        <div class="table-box"> 
+            <div class="box-body">
+                <form action="{{ route('admin.card-generate') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-4">
@@ -54,25 +79,29 @@
                     </div>
                     <button type="submit" class="btn bg-blue-btn preview_card_generate mt-4">Preview Card</button>
                 </form>
+
+
+                <form action="{{ route('admin.card-generate-pdf-2') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="item_id_for_gen_pdf" class="item_id_for_gen_pdf">
+                    <input type="hidden" name="design_id_for_gen_pdf" class="design_id_for_gen_pdf">
+                    <input type="hidden" name="background_id_for_gen_pdf" class="background_id_for_gen_pdf">
+                    <div id="preview" class="mt-4"></div>
+                    <div class="generate_btn"></div>
+                </form>
             </div>
         </div>
-
-        @isset($actual_item)
-        @foreach ($actual_item as $item)
-            <div class="certificate-wrap">
-                <div class="certificate-area" style="background-image: url('{{ asset('/'.$background_id) }}')">
-                    <?php echo htmlspecialchars_decode($item) ?>
-                </div>
-            </div>
-        @endforeach
-        @endisset
     </div>
+
+
+
+   
+    
 </section>
 @endsection
 
 @push('js')
 <script src="{{ asset('frequent_changing/js/list_pages.js') }}"></script>
-{{-- <script src="{{ asset('frequent_changing/js/generate_card.js') }}"></script> --}}
-
+<script src="{{ asset('frequent_changing/js/generate_card.js') }}"></script>
 @endpush
 

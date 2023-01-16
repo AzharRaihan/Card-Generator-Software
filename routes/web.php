@@ -53,6 +53,7 @@ Route::group(['middleware' => ['XSS']], function () {
         Route::get('card-generate-view', 'CardExcelUploadController@cardGenerateView')->name('card-generate-view');
         Route::post('card-generate', 'CardExcelUploadController@cardGenerate')->name('card-generate');
         Route::get('card-generate-pdf/{id}', 'CardExcelUploadController@cardGeneratePDF')->name('card-generate-pdf');
+        Route::post('card-generate-pdf-2', 'CardExcelUploadController@cardGeneratePDF2')->name('card-generate-pdf-2');
 
 
 

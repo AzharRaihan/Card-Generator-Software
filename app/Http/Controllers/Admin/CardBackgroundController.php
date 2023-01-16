@@ -79,6 +79,7 @@ class CardBackgroundController extends Controller
                 'background_title' => $request->background_title,
                 'background_img' => $image_path,
             ]);
+            activityLog('Created', Auth::user()->id, Auth::user()->name . 'has been create a background image');
             return redirect()->route('admin.card-background.index')->with(saveMessage("Information insert successful !"));
         }
     }
@@ -104,6 +105,7 @@ class CardBackgroundController extends Controller
     {
         $id = encryptDecrypt($id, 'decrypt');
         $card_id = CardBackground::findOrFail($id);       
+        activityLog('Edit', Auth::user()->id, Auth::user()->name . 'has been edit the background image');
         return view('admin.card-background.edit-card-background', compact('card_id'));
     }
 
@@ -152,6 +154,7 @@ class CardBackgroundController extends Controller
             'background_title' => $request->background_title,
             'background_img' => $image_path,
         ]);
+        activityLog('Update', Auth::user()->id, Auth::user()->name . 'has been update the background image');
         return redirect()->route('admin.card-background.index')->with(updateMessage("Information has been updated successfully !"));
     }
 
@@ -175,6 +178,7 @@ class CardBackgroundController extends Controller
         $card->update([
             'del_status' => 'Delete',
         ]);
+        activityLog('Delete', Auth::user()->id, Auth::user()->name . 'has been delete the background image');
         return redirect()->back()->with(deleteMessage("Information has been delete successfully !"));
     }
 

@@ -16,7 +16,6 @@ class CardDesignController extends Controller
      */
     public function index()
     {
-
         $data = [];
         $data['message'] = request()->get("message") ?? '';
         $data['card_designs'] = CardDesign::where('del_status', 'Live')->latest()->get();
@@ -49,6 +48,7 @@ class CardDesignController extends Controller
             'card_title'=> $request->card_title,
             'card_design'=> trim($card_design),
         ]);
+        activityLog('created', Auth::user()->id, Auth::user()->name . 'has been created a card');
         return response()->json([
             'status' => 200,
             'message' => 'Information has been saved successfully !',
@@ -81,6 +81,7 @@ class CardDesignController extends Controller
         $url = asset('frequent_changing/upload-demo/qrcode.png');
         $img = '<img src="'.$url.'"'. 'width="'.'50'.'"'. 'height="'.'50'.'">';
         $card_html_content = str_replace(array("qrcode-position"), array($img), $extract_card_design);
+        activityLog('edit', Auth::user()->id, Auth::user()->name . 'has been edit the card');
         return view('admin.card-design.edit-card', compact('card_html_content', 'card'));
     }
     /**
@@ -93,7 +94,6 @@ class CardDesignController extends Controller
     public function update(Request $request, $id)
     {
         //
-
     }
     /**
      * Update Card the custom function .
@@ -110,6 +110,7 @@ class CardDesignController extends Controller
             'card_title'=> $request->card_title,
             'card_design'=> trim($card_design),
         ]);
+        activityLog('Update', Auth::user()->id, Auth::user()->name . 'has been update the card');
         return response()->json([
             'status' => 200,
             'message' => 'Information has been update successfully !',
@@ -129,6 +130,7 @@ class CardDesignController extends Controller
         $card->update([
             'del_status' => 'Delete',
         ]);
+        activityLog('delete', Auth::user()->id, Auth::user()->name . 'has been delete a card');
         return redirect()->route('admin.card-design.index')->with(deleteMessage("Information has been delete successfully !"));
     }
 }
