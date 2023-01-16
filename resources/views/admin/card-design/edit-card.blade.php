@@ -28,7 +28,7 @@
                 <div class="d-flex mt-4">
                     <div class="certificate-wrap">
                         <div class="certificate-area">
-                            {!! $card->card_design !!} 
+                            {!! $card_html_content !!} 
                         </div>
                         <div class="certificate_erro_msg_count">
                         </div>

@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use PDF;
 use App\Models\CardBackground;
 use Illuminate\Support\Facades\Validator;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 class CardExcelUploadController extends Controller
@@ -214,26 +215,16 @@ class CardExcelUploadController extends Controller
      */
     public function cardGenerate(Request $request)
     {
-
         $validated = $request->validate([
             'item_id' => 'required',
             'design_id' => 'required',
             'background_id' => 'required',
         ]);
-
-
         if ($validated){
             $card_design_list = CardDesign::findOrFail($request->design_id);
-
             $extract_card_design = htmlspecialchars($card_design_list->card_design);
             $item_list = Card::findOrFail($request->item_id);
-
             $background_id = $request->background_id;
-
-
-
-
-
             $card_item_list = $item_list->cardDetails;
             $actual_item = [];
             foreach ($card_item_list as $key=>$item){
@@ -241,8 +232,8 @@ class CardExcelUploadController extends Controller
                 $card_assign = str_replace(array("Location"), array($item->location ?? ""), $card_assign);
                 $card_assign = str_replace(array("Model"), array($item->model ?? ""), $card_assign);
                 $card_assign = str_replace(array("Price"), array($item->price ?? ""), $card_assign);
-                $card_assign = str_replace(array("Date Range"), array($item->date_range ?? ""), $card_assign);
-                $card_assign = str_replace(array("QR-Code"), array($item->qr_code ?? ""), $card_assign);
+                $card_assign = str_replace(array("Date-Range"), array($item->date_range ?? ""), $card_assign);
+                $card_assign = str_replace(array("qrcode-position"), array(QrCode::size(100)->generate($item->qr_code) ?? ""), $card_assign);
                 $card_assign = str_replace(array("Other"), array($item->Other ?? ""), $card_assign);
                 array_push($actual_item, $card_assign);
             }
@@ -253,22 +244,7 @@ class CardExcelUploadController extends Controller
             // ]);
             return view('admin.card-excel-upload.generate_list',compact('actual_item', 'background_id'));
         }
-
-
-
-
-        
-       
-
-
-
-
-
-
-
-
     }
-
 
     /**
      * Card Generate PDF

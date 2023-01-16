@@ -223,29 +223,23 @@ if(! function_exists('number_to_words')) {
         if( ( int ) ( $num ) && ctype_digit( $num ) )
         {
             $words  = array( );
-
             $num    = str_replace( array( ',' , ' ' ) , '' , trim( $num ) );
-
             $list1  = array('','one','two','three','four','five','six','seven',
                 'eight','nine','ten','eleven','twelve','thirteen','fourteen',
                 'fifteen','sixteen','seventeen','eighteen','nineteen');
-
             $list2  = array('','ten','twenty','thirty','forty','fifty','sixty',
                 'seventy','eighty','ninety','hundred');
-
             $list3  = array('','thousand','million','billion','trillion',
                 'quadrillion','quintillion','sextillion','septillion',
                 'octillion','nonillion','decillion','undecillion',
                 'duodecillion','tredecillion','quattuordecillion',
                 'quindecillion','sexdecillion','septendecillion',
                 'octodecillion','novemdecillion','vigintillion');
-
             $num_length = strlen( $num );
             $levels = ( int ) ( ( $num_length + 2 ) / 3 );
             $max_length = $levels * 3;
             $num    = substr( '00'.$num , -$max_length );
             $num_levels = str_split( $num , 3 );
-
             foreach( $num_levels as $num_part )
             {
                 $levels--;
@@ -253,7 +247,6 @@ if(! function_exists('number_to_words')) {
                 $hundreds   = ( $hundreds ? ' ' . $list1[$hundreds] . ' Hundred' . ( $hundreds == 1 ? '' : 's' ) . ' ' : '' );
                 $tens       = ( int ) ( $num_part % 100 );
                 $singles    = '';
-
                 if( $tens < 20 ) { $tens = ( $tens ? ' ' . $list1[$tens] . ' ' : '' ); } else { $tens = ( int ) ( $tens / 10 ); $tens = ' ' . $list2[$tens] . ' '; $singles = ( int ) ( $num_part % 10 ); $singles = ' ' . $list1[$singles] . ' '; } $words[] = $hundreds . $tens . $singles . ( ( $levels && ( int ) ( $num_part ) ) ? ' ' . $list3[$levels] . ' ' : '' ); } $commas = count( $words ); if( $commas > 1 )
             {
                 $commas = $commas - 1;
@@ -416,5 +409,99 @@ if(! function_exists('number_to_words')) {
             return FALSE;    # if function is not used properly
         }
     }
+
+
+    /**
+    * Get image information
+    */
+    if(! function_exists('imageInfo')) {
+    function imageInfo($image) {
+        return [
+            'is_image' => isImage($image),
+            'extension' => fileExtension($image),
+            'width' => imageWidthHeight($image)['width'],
+            'height' => imageWidthHeight($image)['height'],
+            'size' => $image->getSize(),
+            'mb_size' => uploadedFileSizeInMb($image->getSize())
+        ];
+    }
+
+    /**
+    * Get uploaded file size
+    */
+
+    if (! function_exists('uploadedFileSize')){
+    function uploadedFileSize($size, $precision = 2)
+       {
+           if ( $size > 0 ) {
+               $size = (int) $size;
+               $base = log($size) / log(1024);
+               $suffixes = array(' bytes', ' KB', ' MB', ' GB', ' TB');
+               return round(pow(1024, $base - floor($base)), $precision) . $suffixes[floor($base)];
+           }
+           return $size;
+       }
+    }
+   
+    if (! function_exists('uploadedFileSizeInMb')){
+       function uploadedFileSizeInMb($size, $precision = 2)
+       {
+           if ( $size > 0 ) {
+               $mb = number_format($size / 1048576, 2);
+               return $mb;
+           }
+           return $size;
+       }
+    }
+   
+   /**
+    * Get file type
+    */
+   if(! function_exists('getFileType')) {
+       function getFileType($file) {
+           return $file->getClientMimeType();
+       }
+   }
+   
+    /**
+        * Check file is image
+        */
+    if(! function_exists('isImage')) {
+        function isImage($file) {
+            $file_type = $file->getClientMimeType();
+            $text = explode('/',$file_type)[0];
+            if($text == "image") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+   
+    /**
+        * Get file extension
+        */
+    if(! function_exists('fileExtension')) {
+        function fileExtension($file) {
+            if(isset($file)) {
+                return $file->getClientOriginalExtension();
+            } else {
+                return "Inalid file";
+            }
+        }
+    }
+   
+   /**
+    * Get file type
+    */
+   if(! function_exists('imageWidthHeight')) {
+       function imageWidthHeight($image) {
+           $img_size_array = getimagesize($image);
+           $width = $img_size_array[0];
+           $height = $img_size_array[1];
+           return array('width' => $width,'height' => $height);
+       }
+   }
+}
 
 }

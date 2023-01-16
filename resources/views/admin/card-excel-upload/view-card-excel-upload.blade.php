@@ -14,7 +14,7 @@
     <div id="message"></div>
 
     <section class="content-header">
-        <h3 class="top-left-header">Show Card Excel Upload</h3>
+        <h3 class="top-left-header">Show Excel Card Data</h3>
     </section>
 
 
@@ -28,21 +28,45 @@
                             <th>Location</th>
                             <th>Model</th>
                             <th>Price</th>
-                            <th>Qr Code</th>
-                            <th>Date Range</th>
+                            <th>Date-Range</th>
+                            <th>Qr-Code-URL</th>
                             <th>Other</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($card_item as $item)
                         <tr>
-                            <input type="hidden" class="form-control" name="card_details_id[]" value="{{ $item->id }}" placeholder="">
-                            <td><input type="text" class="form-control" name="location[]" value="{{ $item->location }}" placeholder=""></td>
-                            <td><input type="text" class="form-control" name="model[]" value="{{ $item->model }}" placeholder=""></td>
-                            <td><input type="text" class="form-control" name="price[]" value="{{ $item->price }}" placeholder=""></td>
-                            <td><input type="text" class="form-control" name="qr_code[]" value="{{ $item->qr_code }}" placeholder=""></td>
-                            <td><input type="text" class="form-control" name="date_range[]" value="{{ $item->date_range }}" placeholder=""></td>
-                            <td><input type="text" class="form-control" name="other[]" value="{{ $item->other }}" placeholder=""></td>
+
+                            <td>
+                                <span>
+                                    {{ $item->location }}
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    {{ $item->model }}
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    {{ $item->price }}
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    {{ $item->date_range }}
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    {{ $item->qr_code }}
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    {{ $item->other }}
+                                </span>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

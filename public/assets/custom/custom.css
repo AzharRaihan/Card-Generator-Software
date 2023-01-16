@@ -223,9 +223,9 @@ btn-close {
 .rpl-15 {
     padding: 15px 15px 15px 15px !important;
 }
-.main-sidebar .sidebar-menu li a, .main-sidebar2 .sidebar-menu li a {
+/* .main-sidebar .sidebar-menu li a, .main-sidebar2 .sidebar-menu li a {
     white-space: normal !important;
-}
+} */
 .dropdown-toggle::after {
     content: none;
 }
@@ -240,4 +240,12 @@ btn-close {
 .main-sidebar .logo-wrapper .logo-lg img, .main-sidebar2 .logo-wrapper .logo-lg img {
     width: 75% !important;
     max-height: 50 !important;
+}
+.cgs_ws_nowrap{
+    white-space: nowrap !important;
+}
+
+.logo-mini{
+    font-size: 25px !important;
+    margin-top: 15px !important;
 }

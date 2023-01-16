@@ -12,6 +12,7 @@
 
     <section class="content-header">
         <h3 class="top-left-header">List Card Excel</h3>
+        <input type="hidden" class="datatable_name" data-title="List Card Excel" data-id_name="datatable">
     </section>
 
 
@@ -22,7 +23,6 @@
                 <!-- /.box-header -->
                 <div class="table-responsive"> 
                     <table id="datatable" class="table table-bordered table-striped">
-                        {{-- <input type="hidden" class="datatable_name" data-id_name="datatable" data-title="List Design"> --}}
                         <thead>
                             <tr>
                                 <th>SN</th>

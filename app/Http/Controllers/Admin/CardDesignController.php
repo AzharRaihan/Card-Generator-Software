@@ -30,9 +30,7 @@ class CardDesignController extends Controller
      */
     public function create()
     {
-        $data = [];
-        $data['card_background_img'] = CardBackground::where('del_status', 'Live')->latest()->get();
-        return view('admin.card-design.add-card', $data);
+        return view('admin.card-design.add-card');
     }
 
     /**
@@ -79,10 +77,12 @@ class CardDesignController extends Controller
     {
         $id = encryptDecrypt($id, 'decrypt');
         $card = CardDesign::findOrFail($id);
-        $card_background_img = CardBackground::where('del_status', 'Live')->latest()->get();
-        return view('admin.card-design.edit-card', compact('card', 'card_background_img'));
+        $extract_card_design = $card->card_design;
+        $url = asset('frequent_changing/upload-demo/qrcode.png');
+        $img = '<img src="'.$url.'"'. 'width="'.'50'.'"'. 'height="'.'50'.'">';
+        $card_html_content = str_replace(array("qrcode-position"), array($img), $extract_card_design);
+        return view('admin.card-design.edit-card', compact('card_html_content', 'card'));
     }
-
     /**
      * Update the specified resource in storage.
      *

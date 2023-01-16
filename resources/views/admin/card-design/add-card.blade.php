@@ -26,22 +26,22 @@
                 <div class="d-flex mt-4">
                     <div class="certificate-wrap">
                         <div class="certificate-area">
-                            <span class="drag c_pointer">
+                            <span class="drag c_pointer" style="position: relative; left: 146px; top: 136px;">
                                 <span class="trigger_to_select_location">Location</span>
                             </span>
-                            <span class="drag c_pointer">
+                            <span class="drag c_pointer" style="position: relative; left: -43px; top: 138px;">
                                 <span class="trigger_to_select_model">Model</span>
                             </span>
-                            <span class="drag c_pointer">
-                                <span class="trigger_to_select_price">Price</span>
+                            <span class="drag c_pointer" style="position: relative; left: 72px; top: 42px;">
+                                <span class="trigger_to_select_price" style="font-size: 26px; font-weight: 900;">Price</span>
                             </span>
-                            <span class="drag c_pointer">
-                                <span class="trigger_to_select_date">Date Range</span>
+                            <span class="drag c_pointer" style="position: relative; left: -55px; top: 99px;">
+                                <span class="trigger_to_select_date">Date-Range</span>
                             </span>
-                            <span class="drag c_pointer">
+                            <span class="drag c_pointer" style="position: relative; left: 267px; top: -40.5px;">
                                 <span class="trigger_to_select_other">Other</span>
                             </span>
-                            <div class="drag resize edit-image ui-widget-content qr_code_range position_relative">
+                            <div class="drag resize edit-image ui-widget-content qr_code_range position_relative" style="left: 0px; top: -55px; height: 131px; width: 131px;">
                                 <img src="{{ asset('frequent_changing/upload-demo/qrcode.png') }}" width="50" height="50">
                             </div>
                         </div>

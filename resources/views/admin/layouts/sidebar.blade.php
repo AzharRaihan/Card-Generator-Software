@@ -33,7 +33,7 @@
                     </ul>
                 </li>
                 <li  class="treeview">
-                    <a href="#"><i data-feather="settings"></i><span>Design Layout</span></a>
+                    <a href="#"><i data-feather="grid"></i><span>Design Layout</span></a>
                     <ul class="treeview-menu">
                         <li class="">
                             <a href="{{ route('admin.card-design.create') }}">
@@ -47,8 +47,13 @@
                         </li>
                     </ul>
                 </li>
+
+                {{-- <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> --}}
+
+
+
                 <li  class="treeview">
-                    <a href="#"><i data-feather="settings"></i><span>Background Design</span></a>
+                    <a href="#"><i data-feather="image"></i><span>Background Design</span></a>
                     <ul class="treeview-menu">
                         <li class="">
                             <a href="{{ route('admin.card-background.create') }}">
@@ -63,7 +68,7 @@
                     </ul>
                 </li>
                 <li  class="treeview">
-                    <a href="#"><i data-feather="settings"></i><span>Card Excel Upload</span></a>
+                    <a href="#"><i data-feather="file-text"></i><span>Card Excel Upload</span></a>
                     <ul class="treeview-menu">
                         <li class="">
                             <a href="{{ route('admin.card-excel-upload.create') }}">

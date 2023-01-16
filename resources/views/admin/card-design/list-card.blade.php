@@ -24,8 +24,8 @@
 
     <section class="content-header">
         <h3 class="top-left-header">List Design</h3>
+        <input type="hidden" class="datatable_name" data-title="List Design" data-id_name="datatable">
     </section>
-
 
 
     <div class="box-wrapper">
@@ -33,7 +33,6 @@
             <div class="box-body">
                 <div class="table-responsive"> 
                     <table id="datatable" class="table table-bordered table-striped">
-                        {{-- <input type="hidden" class="datatable_name" data-id_name="datatable" data-title="List Design"> --}}
                         <thead>
                             <tr>
                                 <th>SN</th>

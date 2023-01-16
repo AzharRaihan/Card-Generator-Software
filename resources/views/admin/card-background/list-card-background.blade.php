@@ -12,6 +12,7 @@
 
     <section class="content-header">
         <h3 class="top-left-header">List Card Background</h3>
+        <input type="hidden" class="datatable_name" data-title="List Card Background" data-id_name="datatable">
     </section>
 
 

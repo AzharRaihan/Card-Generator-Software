@@ -33,8 +33,8 @@
                                 <th>Location</th>
                                 <th>Model</th>
                                 <th>Price</th>
-                                <th>Date Range</th>
-                                <th>Qr Code URL</th>
+                                <th>Date-Range</th>
+                                <th>Qr-Code-URL</th>
                                 <th>Other</th>
                                 <th></th>
                             </tr>

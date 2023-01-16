@@ -185,13 +185,12 @@
         <span class="inner-circle"></span>
         </a>
         <!-- Sidebar toggle button-->
-        <a href="#" class="logo-wrapper">
+        <a href="{{ route('admin.dashboard') }}" class="logo-wrapper">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">CG</span>
+        <h3 class="logo-mini">C G</h3>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-            {{-- <img src="{{ asset(isset($site) && $site->logo ? $site->logo : 'assets/images/logo.png') }}" alt="" height="40" width="188"> --}}
-            Card Generator
+            <img src="{{ asset(isset($site) && $site->logo ? $site->logo : 'frequent_changing/images/logo/logo.png') }}" alt="" height="40" width="188">
         </span>
         </a>
 

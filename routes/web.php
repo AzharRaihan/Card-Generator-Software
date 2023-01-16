@@ -100,10 +100,6 @@ Route::group(['middleware' => ['XSS']], function () {
         
     });
 
-    Route::get('/qrcode', 'QrCodeController@index');
-
-
-
 
     Route::get('logout',function (){
         Auth::logout();

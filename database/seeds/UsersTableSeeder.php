@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'role' => "admin",
             'first_name' => 'Super',
             'last_name' => 'Admin',
-            'email' => 'admin@doorsoft.co',
+            'email' => 'admin@cardgenerator.com',
             'mobile' => '1234567890',
             'password' => Hash::make('123456'),
         ]);
@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'role' => "user",
             'first_name' => 'User',
             'last_name' => 'One',
-            'email' => 'userone@doorsoft.co',
+            'email' => 'user@cardgenerator.com',
             'mobile' => '1234567891',
             'password' => Hash::make('123456'),
         ]);

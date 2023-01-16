@@ -102,6 +102,7 @@ $(function () {
 		}
         if (error == false) {
             $(".ui-resizable-handle").remove();
+            $(".qr_code_range").text("qrcode-position");
             let certificate_val = $('.certificate-area').html();
             $.ajax({
                 method: "POST",
@@ -135,6 +136,7 @@ $(function () {
 		}
         if (error == false) {
             $(".ui-resizable-handle").remove();
+            $(".qr_code_range").text("qrcode-position");
             let certificate_val = $('.certificate-area').html();
             $.ajax({
                 type: "POST",
@@ -149,7 +151,6 @@ $(function () {
             });
         } 
     });
-
 
 
     $(document).on('change', '#card_background_id', function (e) { 

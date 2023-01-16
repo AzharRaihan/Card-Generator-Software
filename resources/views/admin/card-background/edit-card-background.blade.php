@@ -27,7 +27,7 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="background_title">Card Background Title <span class="required_star"> *</span></label>
                                 <input type="text" class="form-control @error('background_title') is-invalid @enderror" id="background_title" name="background_title" placeholder="Card Background Title" value="{{ $card_id->background_title }}">
@@ -38,16 +38,16 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="background_img">Card Backgorund Image <span class="required_star"> *</span></label>
                                 <div class="d-flex">
-                                    <input type="file" class="form-control @error('background_img') is-invalid @enderror" id="background_img" name="background_img">
+                                    <input type="file" class="form-control" id="background_img" name="background_img" accept="image/*">
                                     <button type="button" class="btn bg-blue-btn ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-eye"></i></button>
                                 </div>
-                                @error('background_img')
-                                <span class="invalid-feedback" role="alert">
-                                    <p class="erro_msg">{{ $message }}</p>
+                                @if(Session::has('background_img_error'))
+                                <span class="" role="alert">
+                                    <p class="erro_msg">{{ Session::get('background_img_error') }}</p>
                                 </span>
                                 @enderror
                             </div>
@@ -74,7 +74,7 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <img src="{{ asset('uploads/card-background/'. $card_id->background_img) }}" alt="" width="200" height="200">
+                    <img src="{{ asset('/'. $card_id->background_img) }}" alt="" width="200" height="200">
                 </div>
             </div>
             <div class="modal-footer">
