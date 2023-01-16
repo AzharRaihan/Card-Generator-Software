@@ -20,6 +20,7 @@ use PDF;
 use App\Models\CardBackground;
 use Illuminate\Support\Facades\Validator;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Auth;
 
 
 class CardExcelUploadController extends Controller
@@ -32,7 +33,12 @@ class CardExcelUploadController extends Controller
     public function index()
     {
         $data = [];
-        $data['cards'] = Card::where('del_status', 'Live')->latest()->get();
+        $auth_user = Auth::user();
+        if($auth_user->role === 'admin'){
+            $data['cards'] = Card::where('del_status','Live')->latest()->get();
+        }else{
+            $data['cards'] = Card::where(['added_by'=>'user','del_status'=>'Live'])->latest()->get();
+        }
         return view('admin.card-excel-upload.list-card-excel-upload', $data);
     }
 
@@ -54,6 +60,7 @@ class CardExcelUploadController extends Controller
      */
     public function store(Request $request)
     {
+        $auth_user = Auth::user();
         $validator = Validator::make($request->all(), [
             'generate_for' => 'required|max:100',
             'excel_file' => 'required|file|mimes:xls,xlsx'
@@ -81,6 +88,7 @@ class CardExcelUploadController extends Controller
                 {
                     $card = Card::create([
                         'generate_for' => $request->generate_for,
+                        'added_by' => $auth_user->role,
                         'created_at' => Carbon::now()->toDateTimeString(),
                         'updated_at' => Carbon::now()->toDateTimeString(),
                     ]);
@@ -255,7 +263,7 @@ class CardExcelUploadController extends Controller
     {
         $id = encryptDecrypt($id, 'decrypt');
         $card = Card::findOrFail($id);
-       $generate_pdf = PDF::loadView('admin.card-excel-upload.card-generate-pdf', compact('card'));
-       return $generate_pdf->download($card->id . '.pdf');
+        $generate_pdf = PDF::loadView('admin.card-excel-upload.card-generate-pdf', compact('card'));
+        return $generate_pdf->download($card->id . '.pdf');
     }
 }

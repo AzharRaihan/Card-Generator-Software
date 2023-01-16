@@ -1,5 +1,4 @@
 @extends('admin.layouts.app')
-@section('title','Drag - Drop')
 @push('css')
 @endpush
 
@@ -16,7 +15,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="box4column p-3">
-                <form action="{{ route('admin.card-generate') }}" method="POST">
+                <form action="{{ route('admin.card-generate-view') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-4">
@@ -57,6 +56,16 @@
                 </form>
             </div>
         </div>
+
+        @isset($actual_item)
+        @foreach ($actual_item as $item)
+            <div class="certificate-wrap">
+                <div class="certificate-area" style="background-image: url('{{ asset('/'.$background_id) }}')">
+                    <?php echo htmlspecialchars_decode($item) ?>
+                </div>
+            </div>
+        @endforeach
+        @endisset
     </div>
 </section>
 @endsection

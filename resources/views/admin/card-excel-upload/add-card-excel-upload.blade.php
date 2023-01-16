@@ -1,5 +1,4 @@
 @extends('admin.layouts.app')
-@section('title','Drag - Drop')
 @push('css')
 @endpush
 

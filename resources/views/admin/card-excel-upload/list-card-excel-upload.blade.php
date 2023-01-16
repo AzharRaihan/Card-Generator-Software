@@ -1,9 +1,7 @@
 @extends('admin.layouts.app')
-@section('title','Drag - Drop')
 @push('css')
 <link rel="stylesheet" href="{{ asset('frequent_changing/css/design_layout_by_admin.css') }}">
 @endpush
-
 @section('content')
 <section class="main-content-wrapper">
     {{ alertMessage() }}
@@ -38,7 +36,7 @@
                             <tr>
                                 <td>{{ $count -- }}</td>
                                 <td>{{ $card->generate_for }}</td>
-                                <td>{{ $card->created_at }}</td>
+                                <td>{{ $card->added_by === 'admin' ? 'Admin' : 'User' }}</td>
                                 <td>{{ $card->created_at }}</td>
                                 <td class="op_center">
                                     <div class="btn-group actionDropDownBtn">
@@ -49,6 +47,10 @@
                                             <li><a class="edit" href="{{ route('admin.card-excel-upload.edit', encryptDecrypt($card->id, 'encrypt')) }}" ><i class="fa fa-edit tiny-icon"></i>Edit</a></li>
                                             <li><a class="view" href="{{ route('admin.card-excel-upload.show', encryptDecrypt($card->id, 'encrypt')) }}" ><i class="fa fa-eye tiny-icon"></i>Show</a></li>
                                             <li><a class="pdf" href="{{ route('admin.card-generate-pdf', encryptDecrypt($card->id, 'encrypt')) }}" ><i class="fa fa-edit tiny-icon"></i>Generate PDF</a></li>
+                                            @php 
+                                                $auth_user = Auth::user();
+                                            @endphp
+                                            @if($auth_user->role === 'admin')
                                             <li>
                                                 <a type="button" onclick="deleteData({{ $card->id }})">
                                                     <i class="fa fa-trash tiny-icon"></i>
@@ -59,6 +61,7 @@
                                                     @method('DELETE')
                                                 </form>
                                             </li>
+                                            @endif
                                         </ul> 
                                     </div>
                                 </td>

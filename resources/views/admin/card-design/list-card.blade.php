@@ -1,5 +1,4 @@
 @extends('admin.layouts.app')
-@section('title','Drag - Drop')
 @push('css')
 <link rel="stylesheet" href="{{ asset('frequent_changing/css/design_layout_by_admin.css') }}">
 @endpush

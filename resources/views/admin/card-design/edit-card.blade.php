@@ -1,5 +1,4 @@
 @extends('admin.layouts.app')
-@section('title','Drag - Drop')
 @push('css')
 <link rel="stylesheet" href="{{ asset('frequent_changing/plugin/jquery-ui-drag-and-drop/jquery-ui.css') }}">
 <link rel="stylesheet" href="{{ asset('frequent_changing/plugin/jquery-ui-drag-and-drop/jquery-ui.structure.css') }}">

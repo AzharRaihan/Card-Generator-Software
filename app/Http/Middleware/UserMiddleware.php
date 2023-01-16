@@ -16,7 +16,7 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user_selected_profile = userSelectedProfile();
+        // $user_selected_profile = userSelectedProfile();
         if(Auth::check() && Auth::user()->role === "user"){
             return $next($request);
         } else{
